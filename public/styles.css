@@ -1,6 +1,6 @@
 body{
     margin: 0;
-    font-family: Roboto; 
+    font-family: sans-serif; 
   }
   .wrapper{
     max-width: 960px;
@@ -52,6 +52,9 @@ body{
     border-radius: 4px;
     outline: none;
   }
+  input:focus, select:focus{
+    border: 1px solid #ff0aa7;
+  }
   .field{
     display: inline-block;
     margin: 0 10px;
@@ -69,5 +72,5 @@ body{
     display: block;
     color: #999;
     margin-top: 40px;
-    font-size: 0.7em;
+    font-size: 0.8em;
   }
