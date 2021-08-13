@@ -1,14 +1,9 @@
 import {Invoice} from './classes/invoice.js';
+import {Payment} from './classes/payments.js'
+import {HasFormatter} from './interface/HasFormatter.js'
+
 const form = document.querySelector(".new-item-form") as HTMLFormElement;
 
-form.addEventListener("submit", (e: Event) => {
-  e.preventDefault();
-
-  console.log(type.value, toFrom.value, details.value, amount.valueAsNumber);
-  const inv1 = new Invoice(toFrom.value, details.value, amount.valueAsNumber);
-
-  console.log(inv1);
-});
 // inputs
 const type = document.querySelector("#type") as HTMLSelectElement;
 
@@ -18,32 +13,16 @@ const details = document.querySelector("#details") as HTMLInputElement;
 
 const amount = document.querySelector("#amount") as HTMLInputElement;
 
-
-
-// Interface
-interface isPerson {
-    name: string,
-    age: number,
-    speak(a: string): string,
-    spend(a: number): number
-}
-
-let firstPerson: isPerson = {
-    name : "Rishabh",
-    age : 18,
-    speak(text){
-        return(text);
-    },
-    spend(amount){
-        console.log(amount);
-        return (amount/3000)*100;
+form.addEventListener("submit", (e: Event) => {
+    e.preventDefault();
+  
+    let doc: HasFormatter;
+    if(type.value === 'invoice' ){
+        doc = new Invoice(toFrom.value, details.value, amount.valueAsNumber);
     }
-}
+    else{
+        doc = new Payment(toFrom.value, details.value, amount.valueAsNumber)
+    }
 
-const speakAboutPerson = (person: isPerson) =>{
-    console.log(
-        person.name+ " has an age of "+person.age+" says "+person.speak("My name is Rishabh")+" and spends "+person.spend(20)
-    )
-}
-
-speakAboutPerson(firstPerson);
+    console.log(doc);
+  });
