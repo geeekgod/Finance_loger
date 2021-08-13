@@ -15,10 +15,14 @@ let firstPerson = {
     name: "Rishabh",
     age: 18,
     speak(text) {
-        console.log(text);
+        return (text);
     },
     spend(amount) {
         console.log(amount);
         return (amount / 3000) * 100;
     }
 };
+const speakAboutPerson = (person) => {
+    console.log(person.name + " has an age of " + person.age + " says " + person.speak("My name is Rishabh") + " and spends " + person.spend(20));
+};
+speakAboutPerson(firstPerson);

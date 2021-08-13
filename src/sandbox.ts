@@ -24,7 +24,7 @@ const amount = document.querySelector("#amount") as HTMLInputElement;
 interface isPerson {
     name: string,
     age: number,
-    speak(a: string): void,
+    speak(a: string): string,
     spend(a: number): number
 }
 
@@ -32,10 +32,18 @@ let firstPerson: isPerson = {
     name : "Rishabh",
     age : 18,
     speak(text){
-        console.log(text);
+        return(text);
     },
     spend(amount){
         console.log(amount);
         return (amount/3000)*100;
     }
 }
+
+const speakAboutPerson = (person: isPerson) =>{
+    console.log(
+        person.name+ " has an age of "+person.age+" says "+person.speak("My name is Rishabh")+" and spends "+person.spend(20)
+    )
+}
+
+speakAboutPerson(firstPerson);
