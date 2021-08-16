@@ -18,15 +18,19 @@ const ul = document.querySelector('.item-list') as HTMLUListElement;
 
 const list = new ListTemplate(ul);
 
+let inputVar: [string, string, number]
+
 form.addEventListener("submit", (e: Event) => {
     e.preventDefault();
+
+    inputVar = [toFrom.value, details.value, amount.valueAsNumber];
   
     let doc: HasFormatter;
     if(type.value === 'invoice' ){
-        doc = new Invoice(toFrom.value, details.value, amount.valueAsNumber);
+        doc = new Invoice(...inputVar);
     }
     else{
-        doc = new Payment(toFrom.value, details.value, amount.valueAsNumber)
+        doc = new Payment(...inputVar)
     }
 
     list.render(doc, type.value, 'end' );
